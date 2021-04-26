@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'EStocksManagerWeb';
-  selectedDate = '';
+  selectedFromDate = '';
+  selectedToDate = '';
 
-  onDateEntry(event: any) {
-    console.log(event);
+  FromDateEntry(event: any) {
+    console.log(event.target.valueAsDate);
+    this.selectedFromDate = formatDate(event.target.valueAsDate, 'MM-dd-yyyy', 'en-US');
+    console.log('selectedFromDate', this.selectedFromDate);
+  }
+
+  ToDateEntry(event: any) {
+    console.log(event.target.valueAsDate);
+    this.selectedToDate = formatDate(event.target.valueAsDate, 'MM-dd-yyyy', 'en-US');
+    console.log('selectedToDate', this.selectedToDate);
   }
 }
