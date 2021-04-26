@@ -81,4 +81,30 @@
       </div>
     </div>
   </section>
+
+  <!-- Next Stock Info table -->
+  <section class="section">
+    <table class="table">
+      <thead>
+        <tr>
+          <th *ngFor = "let col of stockInfoHeaders">
+            {{col}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let data of stockInfoRows">
+          <td>
+            {{data.stockPrice}}
+          </td>
+          <td>
+            {{data.priceAsOfDate}}
+          </td>
+          <td>
+            {{data.priceAsOfTime}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 </div>
