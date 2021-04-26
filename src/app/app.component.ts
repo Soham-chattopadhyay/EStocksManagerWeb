@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'EStocksManagerWeb';
+  selectedDate = '';
+
+  onDateEntry(event: any) {
+    console.log(event);
+  }
 }
