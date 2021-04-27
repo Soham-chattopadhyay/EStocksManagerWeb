@@ -1,5 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
+import { CompanyProfile } from './Models/CompanyProfile';
+import { stockmanagementapiservice } from './Services/stockmanagementapi.services';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
+  constructor(private _stockmanagementapiservice:stockmanagementapiservice ){}
+
   //Properties
   selectedFromDate = '';
   selectedToDate = '';
@@ -57,8 +61,21 @@ export class AppComponent {
     }
   ];
 
-  //#region  Get Date Range
+  listOfCompanies: CompanyProfile[];
 
+  ngOnInit() {
+    //Make API call to populate list of available companies on page load
+    this._stockmanagementapiservice.getCompanyInfo()
+    .subscribe
+    (
+      data=>
+      {
+        this.listOfCompanies = data;
+      }
+    );
+  }
+
+  //#region  Get Date Range
   FromDateEntry(event: any) {
     console.log(event.target.valueAsDate);
     this.selectedFromDate = formatDate(event.target.valueAsDate, 'MM-dd-yyyy', 'en-US');
@@ -72,5 +89,6 @@ export class AppComponent {
   }
 
   //#endregion
+
 
 }

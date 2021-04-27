@@ -18,6 +18,11 @@
           <a class="navbar-link">
             List All Companies
           </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" *ngFor = "let company of listOfCompanies">
+              {{company.companyName}}
+            </a>
+          </div>
         </div>
   
         <div class="navbar-item">
