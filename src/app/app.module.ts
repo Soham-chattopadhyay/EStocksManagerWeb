@@ -4,10 +4,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import { stockmanagementapiservice } from './Services/stockmanagementapi.services';
+import { StockDetailsComponent } from './stock-details/stock-details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StockDetailsComponent
   ],
   imports: [
     BrowserModule,
