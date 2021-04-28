@@ -23,7 +23,7 @@ export class AppComponent {
   stockInfo: CompanyStocks = new CompanyStocks();
   stockFetchNotAllowed = true;
   stocksInfoHidden = true;
-
+  disableSearch = true;
   listOfCompanies: CompanyProfile[];
   selectedCompanyInfo: CompanyProfile = new CompanyProfile();
 
@@ -72,6 +72,8 @@ export class AppComponent {
         this.inputName.nativeElement.value = '';
         this.companyCode = this.selectedCompanyInfo.companyCode;
         this.stockInfo = new CompanyStocks();
+        this.stocksInfoHidden = true;
+        this.disableSearch = true;
       }
     );
   }
@@ -84,15 +86,28 @@ export class AppComponent {
       {
         this.selectedCompanyInfo = data;
         console.log('selectedCompanyInfo', this.selectedCompanyInfo);
-        this.stockFetchNotAllowed = false;
+
+        if(data != null && data.companyCode)
+        {
+          this.stockFetchNotAllowed = false;
+        }
+        else
+        {
+          this.stockFetchNotAllowed = true;
+        }
+        
         this.companyDropDownSelection = 'List All Companies';
         this.stockInfo = new CompanyStocks();
+        this.stocksInfoHidden = true;
+        this.disableSearch = true;
+        this.inputName.nativeElement.value = '';
       }
     );
   }
   
   setCompanyCode(event: any) {
     this.companyCode = event.target.value;
+    this.disableSearch = false;
   }
 
   setCompanyListDropDownHeader(event: any, header: string) {
