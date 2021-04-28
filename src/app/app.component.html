@@ -29,9 +29,9 @@
         <div class="navbar-item">
           <div class="field has-addons">
             <div class="control">
-              <input class="input" type="text" placeholder="Company Code">
+              <input class="input" type="text" placeholder="Company Code" (input) = "setCompanyCode($event)">
             </div>
-            <div class="control">
+            <div class="control" (click) = "intitaSearch()">
               <a class="button is-info">
                 Search
               </a>

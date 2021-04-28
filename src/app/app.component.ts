@@ -16,6 +16,7 @@ export class AppComponent {
   companyDropDownSelection = 'List All Companies';
   selectedFromDate = '';
   selectedToDate = '';
+  companyCode = '';
   stockInfoHeaders = ['Stock Price','Date','TIME'];
   stockInfoRows = [
     {
@@ -107,13 +108,30 @@ export class AppComponent {
         this.selectedCompanyInfo = data;
         console.log('selectedCompanyInfo', this.selectedCompanyInfo);
       }
-    );    
-  }  
+    );
+  }
+
+  intitaSearch () {
+    //Make API call to populate list of available companies on page load
+    this._stockmanagementapiservice.getCompanyInfo(this.companyCode)
+    .subscribe
+    (
+      data=>
+      {
+        this.selectedCompanyInfo = data;
+        console.log('selectedCompanyInfo', this.selectedCompanyInfo);
+      }
+    );
+  }
+  
+  setCompanyCode(event: any) {
+    this.companyCode = event.target.value;
+    console.log('companyCode', this.companyCode);
+  }
 
   setHeader(event: any, header: string) {
     console.log(event.target.value);
     this.companyDropDownSelection = header;
-
   }
   
 }
