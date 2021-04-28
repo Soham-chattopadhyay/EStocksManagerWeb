@@ -13,6 +13,7 @@ export class AppComponent {
   constructor(private _stockmanagementapiservice:stockmanagementapiservice ){}
 
   //Properties
+  companyDropDownSelection = 'List All Companies';
   selectedFromDate = '';
   selectedToDate = '';
   stockInfoHeaders = ['Stock Price','Date','TIME'];
@@ -62,10 +63,11 @@ export class AppComponent {
   ];
 
   listOfCompanies: CompanyProfile[];
+  selectedCompanyInfo: CompanyProfile = new CompanyProfile();
 
   ngOnInit() {
     //Make API call to populate list of available companies on page load
-    this._stockmanagementapiservice.getCompanyInfo()
+    this._stockmanagementapiservice.getAllCompanyInfo()
     .subscribe
     (
       data=>
@@ -73,6 +75,9 @@ export class AppComponent {
         this.listOfCompanies = data;
       }
     );
+
+    console.log('listOfCompanies', this.listOfCompanies);
+    
   }
 
   //#region  Get Date Range
@@ -90,5 +95,25 @@ export class AppComponent {
 
   //#endregion
 
+  onOptionsSelected(event: any){
+    console.log(event.target.value);
 
+    //Make API call to populate list of available companies on page load
+    this._stockmanagementapiservice.getCompanyInfo(event.target.value)
+    .subscribe
+    (
+      data=>
+      {
+        this.selectedCompanyInfo = data;
+        console.log('selectedCompanyInfo', this.selectedCompanyInfo);
+      }
+    );    
+  }  
+
+  setHeader(event: any, header: string) {
+    console.log(event.target.value);
+    this.companyDropDownSelection = header;
+
+  }
+  
 }

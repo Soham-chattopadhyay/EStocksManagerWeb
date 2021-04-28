@@ -1,6 +1,10 @@
 
 export class CompanyProfile
 {
+    constructor () {
+        this.companyCode = '';
+        this.companyName = '';
+    }
   companyCode: string;
   companyName: string;
   companyCEO: string;

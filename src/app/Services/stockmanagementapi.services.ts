@@ -7,7 +7,11 @@ export class stockmanagementapiservice
 {
     constructor(private httpClient: HttpClient) {}
 
-    getCompanyInfo(): Observable<any> {
+    getAllCompanyInfo(): Observable<any> {
         return this.httpClient.get('http://localhost:53870/api/v1.0/market/company/getall');
+    }
+
+    getCompanyInfo(comnapnyCode: string): Observable<any> {
+        return this.httpClient.get('http://localhost:53870/api/v1.0/market/company/info/' + comnapnyCode );
     }
 }

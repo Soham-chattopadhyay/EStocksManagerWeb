@@ -14,14 +14,15 @@
           <button class="button is-hovered">Add Company</button>
         </div>
   
-        <div class="navbar-item has-dropdown is-hoverable">
+        <div class="navbar-item has-dropdown is-hoverable" style="padding-right: 4rem; padding-left: 4rem;">
           <a class="navbar-link">
-            List All Companies
+            {{companyDropDownSelection}}
           </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" *ngFor = "let company of listOfCompanies">
+          <div class="navbar-dropdown" (click) = "onOptionsSelected($event)">
+            <option class="navbar-item" *ngFor = "let company of listOfCompanies" [value] ="company.companyCode"
+            (click) = "setHeader($event, company.companyName)">
               {{company.companyName}}
-            </a>
+            </option>            
           </div>
         </div>
   
@@ -48,7 +49,7 @@
       <div class="field-body">
         <div class="field">
           <div class="control" style="padding-left: 1.3rem;">
-            <input class="input" type="text" placeholder="Compnay Code" readonly>
+            <input class="input" type="text" placeholder="Compnay Code" readonly value = "{{selectedCompanyInfo.companyCode}}">
           </div>
         </div>
       </div>
@@ -58,7 +59,7 @@
       <div class="field-body">
         <div class="field">
           <div class="control" style="padding-left: 0.8rem;">
-            <input class="input" type="text" placeholder="Compnay Name" readonly>
+            <input class="input" type="text" placeholder="Compnay Name" readonly  value = "{{selectedCompanyInfo.companyName}}">
           </div>
         </div>
       </div>
