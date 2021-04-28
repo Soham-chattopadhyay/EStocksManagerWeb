@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CompanyProfile } from './Models/CompanyProfile';
+import { CompanyStocks } from './Models/CompanyStocks';
 import { stockmanagementapiservice } from './Services/stockmanagementapi.services';
 
 @Component({
@@ -11,6 +12,7 @@ import { stockmanagementapiservice } from './Services/stockmanagementapi.service
 export class AppComponent {
   
   constructor(private _stockmanagementapiservice:stockmanagementapiservice ){}
+  @ViewChild('compnayCodeSearch') inputName: any;
 
   //Properties
   companyDropDownSelection = 'List All Companies';
@@ -18,6 +20,8 @@ export class AppComponent {
   selectedToDate = '';
   companyCode = '';
   stockInfoHeaders = ['Stock Price','Date','TIME'];
+  stockInfo: CompanyStocks = new CompanyStocks();
+  stockFetchNotAllowed = true;
   stockInfoRows = [
     {
       "companyCode": "APL",
@@ -75,10 +79,13 @@ export class AppComponent {
       {
         this.listOfCompanies = data;
       }
-    );
-
-    console.log('listOfCompanies', this.listOfCompanies);
+    ); 
     
+    //Set Default date value
+    this.selectedFromDate = formatDate(new Date(), 'MM-dd-yyyy', 'en-US');
+    console.log('default-selectedFromDate', this.selectedFromDate);
+    this.selectedToDate = formatDate(new Date(), 'MM-dd-yyyy', 'en-US');
+    console.log('default-selectedToDate', this.selectedToDate);
   }
 
   //#region  Get Date Range
@@ -97,7 +104,6 @@ export class AppComponent {
   //#endregion
 
   onOptionsSelected(event: any){
-    console.log(event.target.value);
     this._stockmanagementapiservice.getCompanyInfo(event.target.value)
     .subscribe
     (
@@ -105,6 +111,10 @@ export class AppComponent {
       {
         this.selectedCompanyInfo = data;
         console.log('selectedCompanyInfo', this.selectedCompanyInfo);
+        this.stockFetchNotAllowed = false;
+        this.inputName.nativeElement.value = '';
+        this.companyCode = this.selectedCompanyInfo.companyCode;
+        this.stockInfo = new CompanyStocks();
       }
     );
   }
@@ -117,18 +127,31 @@ export class AppComponent {
       {
         this.selectedCompanyInfo = data;
         console.log('selectedCompanyInfo', this.selectedCompanyInfo);
+        this.stockFetchNotAllowed = false;
+        this.companyDropDownSelection = 'List All Companies';
+        this.stockInfo = new CompanyStocks();
       }
     );
   }
   
   setCompanyCode(event: any) {
     this.companyCode = event.target.value;
-    console.log('companyCode', this.companyCode);
   }
 
-  setHeader(event: any, header: string) {
-    console.log(event.target.value);
+  setCompanyListDropDownHeader(event: any, header: string) {
     this.companyDropDownSelection = header;
+  }
+
+  fetchStockInfo() {
+    this._stockmanagementapiservice.getStockyInfo(this.companyCode, this.selectedFromDate, this.selectedToDate)
+    .subscribe
+    (
+      data=>
+      {
+        this.stockInfo = data;
+        console.log('stockInfo', this.stockInfo);
+      }
+    );
   }
   
 }

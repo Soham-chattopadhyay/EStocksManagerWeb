@@ -20,7 +20,7 @@
           </a>
           <div class="navbar-dropdown" (click) = "onOptionsSelected($event)">
             <option class="navbar-item" *ngFor = "let company of listOfCompanies" [value] ="company.companyCode"
-            (click) = "setHeader($event, company.companyName)">
+            (click) = "setCompanyListDropDownHeader($event, company.companyName)">
               {{company.companyName}}
             </option>            
           </div>
@@ -29,7 +29,7 @@
         <div class="navbar-item">
           <div class="field has-addons">
             <div class="control">
-              <input class="input" type="text" placeholder="Company Code" (input) = "setCompanyCode($event)">
+              <input class="input" type="text" #compnayCodeSearch placeholder="Company Code" (input) = "setCompanyCode($event)">
             </div>
             <div class="control" (click) = "initiateSearch()">
               <a class="button is-info">
@@ -81,9 +81,12 @@
       <div class="field-body">
         <div class="field">
           <div class="control" style="padding-top: 0.5rem; padding-left: 2rem;">
-            <input type="date" (change)="ToDateEntry($event)">
+            <input type="date" (change)="ToDateEntry($event)" >
           </div>
         </div>
+      </div>
+      <div class="buttons">
+        <button class="button is-primary" [disabled] = "stockFetchNotAllowed" (click) = "fetchStockInfo()">Fetch Stocks</button>
       </div>
     </div>
   </section>
@@ -99,7 +102,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor = "let data of stockInfoRows">
+        <tr *ngFor = "let data of stockInfo.stockDetails">
           <td>
             {{data.stockPrice}}
           </td>
