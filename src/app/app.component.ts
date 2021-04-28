@@ -98,8 +98,6 @@ export class AppComponent {
 
   onOptionsSelected(event: any){
     console.log(event.target.value);
-
-    //Make API call to populate list of available companies on page load
     this._stockmanagementapiservice.getCompanyInfo(event.target.value)
     .subscribe
     (
@@ -111,8 +109,7 @@ export class AppComponent {
     );
   }
 
-  intitaSearch () {
-    //Make API call to populate list of available companies on page load
+  initiateSearch () {
     this._stockmanagementapiservice.getCompanyInfo(this.companyCode)
     .subscribe
     (
