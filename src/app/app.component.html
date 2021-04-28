@@ -99,7 +99,7 @@
 
   <!-- Next Stock Info table -->
   <section class="section tile is-parent">
-    <table class="table">
+    <table class="table" [hidden] ="stocksInfoHidden">
       <thead>
         <tr>
           <th style="padding-right: 4rem; padding-left: 3rem" *ngFor = "let col of stockInfoHeaders">
@@ -125,40 +125,43 @@
   </section>
 
   <!-- Stock Min,max,avg -->
-  <section class="section" style="padding-top: 3rem; padding-bottom: 1rem;">
-    <div class="field is-horizontal">
-      <label class="label" style="padding-top: 0.5rem;">MIN</label>
-      <div class="field-body">
-        <div class="field">
-          <div class="control" style="padding-left: 1.5rem; width: 30%;">
-            <input class="input" type="text" placeholder="Minimum Price" readonly value = "{{stockInfo.minStockPrice}}">
+  <div [hidden] ="stocksInfoHidden">
+    <section class="section" style="padding-top: 3rem; padding-bottom: 1rem;">
+      <div class="field is-horizontal">
+        <label class="label" style="padding-top: 0.5rem;">MIN</label>
+        <div class="field-body">
+          <div class="field">
+            <div class="control" style="padding-left: 1.5rem; width: 30%;">
+              <input class="input" type="text" placeholder="Minimum Price" readonly value = "{{stockInfo.minStockPrice}}">
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="field is-horizontal">
-      <label class="label" style="padding-top: 0.5rem;">MAX</label>
-      <div class="field-body">
-        <div class="field">
-          <div class="control" style="padding-left: 1.5rem; width: 30%;">
-            <input class="input" type="text" placeholder="Maximum Price" readonly value = "{{stockInfo.maxStockPrice}}">
+  
+      <div class="field is-horizontal">
+        <label class="label" style="padding-top: 0.5rem;">MAX</label>
+        <div class="field-body">
+          <div class="field">
+            <div class="control" style="padding-left: 1.5rem; width: 30%;">
+              <input class="input" type="text" placeholder="Maximum Price" readonly value = "{{stockInfo.maxStockPrice}}">
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="field is-horizontal">
-      <label class="label" style="padding-top: 0.5rem;">AVG</label>
-      <div class="field-body">
-        <div class="field">
-          <div class="control" style="padding-left: 1.5rem; width: 30%;">
-            <input class="input" type="text" placeholder="Average Price" readonly value = "{{stockInfo.avgStockPrice}}">
+  
+      <div class="field is-horizontal">
+        <label class="label" style="padding-top: 0.5rem;">AVG</label>
+        <div class="field-body">
+          <div class="field">
+            <div class="control" style="padding-left: 1.5rem; width: 30%;">
+              <input class="input" type="text" placeholder="Average Price" readonly value = "{{stockInfo.avgStockPrice}}">
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-  </section>
+  
+    </section>
+  </div>
+  
   
 </div>

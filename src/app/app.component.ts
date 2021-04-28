@@ -22,50 +22,7 @@ export class AppComponent {
   stockInfoHeaders = ['Stock Price','Date','TIME'];
   stockInfo: CompanyStocks = new CompanyStocks();
   stockFetchNotAllowed = true;
-  stockInfoRows = [
-    {
-      "companyCode": "APL",
-      "stockID": "AAPL",
-      "stockPrice": 126128,
-      "priceAsOfDate": "04-23-2021",
-      "priceAsOfTime": "16:51:33"
-    },
-    {
-      "companyCode": "APL",
-      "stockID": "AAPL",
-      "stockPrice": 126129,
-      "priceAsOfDate": "04-23-2021",
-      "priceAsOfTime": "16:51:39"
-    },
-    {
-      "companyCode": "APL",
-      "stockID": "AAPL",
-      "stockPrice": 126116,
-      "priceAsOfDate": "04-23-2021",
-      "priceAsOfTime": "16:51:47"
-    },
-    {
-      "companyCode": "APL",
-      "stockID": "AAPL",
-      "stockPrice": 134251,
-      "priceAsOfDate": "04-23-2021",
-      "priceAsOfTime": "16:55:50"
-    },
-    {
-      "companyCode": "APL",
-      "stockID": "AAPL",
-      "stockPrice": 14526,
-      "priceAsOfDate": "04-25-2021",
-      "priceAsOfTime": "08:16:08"
-    },
-    {
-      "companyCode": "APL",
-      "stockID": "AAPL",
-      "stockPrice": 14579,
-      "priceAsOfDate": "04-25-2021",
-      "priceAsOfTime": "08:16:19"
-    }
-  ];
+  stocksInfoHidden = true;
 
   listOfCompanies: CompanyProfile[];
   selectedCompanyInfo: CompanyProfile = new CompanyProfile();
@@ -150,6 +107,14 @@ export class AppComponent {
       {
         this.stockInfo = data;
         console.log('stockInfo', this.stockInfo);
+
+        if(this.stockInfo != null && this.stockInfo.stockDetails !=null && this.stockInfo.stockDetails.length > 0)
+        {
+          this.stocksInfoHidden = false;
+        }
+        else{
+          this.stocksInfoHidden = true;
+        }
       }
     );
   }
