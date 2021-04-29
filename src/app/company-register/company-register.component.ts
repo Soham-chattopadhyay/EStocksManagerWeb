@@ -14,7 +14,7 @@ export class CompanyRegisterComponent implements OnInit {
   }
 
   navigateToHome(event: any) {
-    this.router.navigate(['']);
+    this.router.navigate(['company-detail']);
   }
 
 }

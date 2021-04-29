@@ -14,7 +14,7 @@ export class CompanyManagementComponent implements OnInit {
   }
 
   navigateToHome(event: any) {
-    this.router.navigate(['']);
+    this.router.navigate(['company-detail']);
   }
 
 }

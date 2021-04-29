@@ -1,0 +1,44 @@
+
+<div class="field">
+  <label class="label">User ID</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="Please enter an unique ID" (input)="setUserProfile($event, 'ID')">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Full Name</label>
+  <div class="control has-icons-left has-icons-right">
+    <input class="input is-success" type="text" placeholder="Please enter your full name"
+      (input)="setUserProfile($event, 'NAME')">
+    <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fas fa-check"></i>
+    </span>
+  </div>
+  <!-- <p class="help is-success">This username is available</p> -->
+</div>
+
+<div class="field">
+  <label class="label">Password</label>
+  <div class="control has-icons-left has-icons-right">
+    <input class="input is-success" type="text" placeholder="Please enter a passowrd"
+      (input)="setUserProfile($event, 'PASS')">
+    <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fas fa-check"></i>
+    </span>
+  </div>
+</div>
+
+<section class="section">
+    <div class="field is-horizontal">
+      <div class="buttons" style="padding-right: 25rem;">
+        <button class="button is-primary" (click) = "registerNewUser()">Register</button>
+      </div>
+    </div>
+  </section>

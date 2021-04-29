@@ -8,6 +8,9 @@ import { StockDetailsComponent } from './stock-details/stock-details.component';
 import { CompanyManagementComponent } from './company-management/company-management.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { CompanyRegisterComponent } from './company-register/company-register.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { usermanagementapiservice } from './Services/usermanagementapi.services';
+import { companymanagementapiservice } from './Services/companymanagementapi.service';
 
 @NgModule({
   declarations: [
@@ -15,14 +18,15 @@ import { CompanyRegisterComponent } from './company-register/company-register.co
     StockDetailsComponent,
     CompanyManagementComponent,
     CompanyDetailsComponent,
-    CompanyRegisterComponent
+    CompanyRegisterComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [stockmanagementapiservice],
+  providers: [stockmanagementapiservice, usermanagementapiservice, companymanagementapiservice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
