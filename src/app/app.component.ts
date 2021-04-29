@@ -15,20 +15,8 @@ export class AppComponent {
 
   //Properties
   title = 'EStocksManagerWeb';
-  stockInfo: CompanyStocks = new CompanyStocks();
-  stocksInfoHidden = true;
 
   ngOnInit() {
-  }
-  
-  GetStockInfoFromCompanyDetail (stockInfoData: CompanyStocks) {
-    if(stockInfoData != null) {
-      this.stockInfo = stockInfoData;
-    }
-  }
-
-  GetStockInfoHideenFlagFromCompanyDetail (stocksInfoHiddenFlag: boolean) {
-    this.stocksInfoHidden = stocksInfoHiddenFlag;
   }
   
 }

@@ -14,8 +14,6 @@ export class CompanyDetailsComponent implements OnInit {
 
   constructor(private _stockmanagementapiservice:stockmanagementapiservice ){}
   @ViewChild('compnayCodeSearch') inputName: any;
-  @Output() stockInfoData = new EventEmitter<CompanyStocks>();
-  @Output() stocksInfoHiddenFlag = new EventEmitter<boolean>();
 
   //Properties
   title = 'EStocksManagerWeb'
@@ -78,10 +76,6 @@ export class CompanyDetailsComponent implements OnInit {
         this.stockInfo = new CompanyStocks();        
         this.stocksInfoHidden = true;        
         this.disableSearch = true;
-
-        //Emit to parent
-        this.stockInfoData.emit(new CompanyStocks());
-        this.stocksInfoHiddenFlag.emit(true);
       }
     );
   }
@@ -109,10 +103,6 @@ export class CompanyDetailsComponent implements OnInit {
         this.stocksInfoHidden = true;
         this.disableSearch = true;
         this.inputName.nativeElement.value = '';
-
-        //Emit to parent
-        this.stockInfoData.emit(new CompanyStocks());
-        this.stocksInfoHiddenFlag.emit(true);
       }
     );
   }
@@ -120,6 +110,7 @@ export class CompanyDetailsComponent implements OnInit {
   setCompanyCode(event: any) {
     this.companyCode = event.target.value;
     this.disableSearch = false;
+    this.stockFetchNotAllowed = true;
   }
 
   setCompanyListDropDownHeader(event: any, header: string) {
@@ -135,19 +126,12 @@ export class CompanyDetailsComponent implements OnInit {
         this.stockInfo = data;
         console.log('stockInfo', this.stockInfo);
 
-        //Emit to parent
-        this.stockInfoData.emit(data);
-
         if(this.stockInfo != null && this.stockInfo.stockDetails !=null && this.stockInfo.stockDetails.length > 0)
         {
           this.stocksInfoHidden = false;
-          //Emit to parent
-          this.stocksInfoHiddenFlag.emit(false);
         }
         else{
           this.stocksInfoHidden = true;
-          //Emit to parent
-          this.stocksInfoHiddenFlag.emit(true);
         }
       }
     );
