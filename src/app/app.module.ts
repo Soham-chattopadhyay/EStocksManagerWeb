@@ -7,13 +7,15 @@ import { stockmanagementapiservice } from './Services/stockmanagementapi.service
 import { StockDetailsComponent } from './stock-details/stock-details.component';
 import { CompanyManagementComponent } from './company-management/company-management.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { CompanyRegisterComponent } from './company-register/company-register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StockDetailsComponent,
     CompanyManagementComponent,
-    CompanyDetailsComponent
+    CompanyDetailsComponent,
+    CompanyRegisterComponent
   ],
   imports: [
     BrowserModule,

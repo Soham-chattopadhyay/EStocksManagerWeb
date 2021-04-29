@@ -8,8 +8,11 @@
   
     <div class="navbar-menu">
       <div class="navbar-start">
+        <div class="navbar-item" >
+          <button class="button is-hovered is-link is-light" (click) = "navigateToCompanyRegister($event)">Register</button>
+        </div>
         <div class="navbar-item" style="padding-right: 10rem;">
-          <button class="button is-hovered is-link is-light">Register/Manage Company</button>
+          <button class="button is-hovered is-link is-light" (click) = "navigateToCompanyManager($event)">Manage Company</button>
         </div>
   
         <div class="navbar-item has-dropdown is-hoverable " style="padding-right: 4rem; padding-left: 4rem;">

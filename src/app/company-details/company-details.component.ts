@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CompanyProfile } from '../Models/CompanyProfile';
 import { CompanyStocks } from '../Models/CompanyStocks';
 import { stockmanagementapiservice } from '../Services/stockmanagementapi.services';
-import { Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company-details',
@@ -12,7 +12,8 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class CompanyDetailsComponent implements OnInit {
 
-  constructor(private _stockmanagementapiservice:stockmanagementapiservice ){}
+  constructor(private _stockmanagementapiservice:stockmanagementapiservice,
+    private router: Router ){}
   @ViewChild('compnayCodeSearch') inputName: any;
 
   //Properties
@@ -135,6 +136,14 @@ export class CompanyDetailsComponent implements OnInit {
         }
       }
     );
+  }
+
+  navigateToCompanyManager (event: any) {
+    this.router.navigate( ['manage-company'] );
+  }
+
+  navigateToCompanyRegister (event: any) {
+    this.router.navigate( ['register-company'] );
   }
 
 }
