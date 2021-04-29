@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import { stockmanagementapiservice } from './Services/stockmanagementapi.services';
 import { StockDetailsComponent } from './stock-details/stock-details.component';
+import { CompanyManagementComponent } from './company-management/company-management.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StockDetailsComponent
+    StockDetailsComponent,
+    CompanyManagementComponent
   ],
   imports: [
     BrowserModule,

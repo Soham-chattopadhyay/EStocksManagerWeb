@@ -15,6 +15,7 @@ export class AppComponent {
   @ViewChild('compnayCodeSearch') inputName: any;
 
   //Properties
+  title = 'EStocksManagerWeb'
   companyDropDownSelection = 'List All Companies';
   selectedFromDate = '';
   selectedToDate = '';
