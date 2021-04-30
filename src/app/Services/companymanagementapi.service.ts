@@ -1,24 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CompanyProfile } from '../Models/CompanyProfile';
 
 @Injectable()
 export class companymanagementapiservice
 {
     constructor(private httpClient: HttpClient) {}
 
-    // getAllCompanyInfo(): Observable<any> {
-    //     return this.httpClient.get('http://localhost:53870/api/v1.0/market/company/getall');
-    // }
-
-    // getCompanyInfo(comnapnyCode: string): Observable<any> {
-    //     return this.httpClient.get('http://localhost:53870/api/v1.0/market/company/info/' + comnapnyCode );
-    // }
-
-    // getStockyInfo(comnapnyCode: string, startDate: string, toDate: string): Observable<any> {
-    //     return this.httpClient.get('http://localhost:53870/api/v1.0/market/stock/get/' 
-    //     + comnapnyCode
-    //     + '/' + startDate
-    //     + '/' + toDate );
-    // }
+    registerCompany(company: CompanyProfile): Observable<any> {
+        return this.httpClient.post('http://localhost:53870/api/v1.0/market/company/register', company);
+    }
 }

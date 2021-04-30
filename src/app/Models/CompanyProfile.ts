@@ -4,6 +4,11 @@ export class CompanyProfile
     constructor () {
         this.companyCode = '';
         this.companyName = '';
+        this.companyCEO = '';
+        this.companyTurnover = 0.0;
+        this.companyWebsite = '';
+        this.stockEnchange = '';
+        this.regStatusConfirmation = new RegStatusConfirmation();
     }
   companyCode: string;
   companyName: string;
