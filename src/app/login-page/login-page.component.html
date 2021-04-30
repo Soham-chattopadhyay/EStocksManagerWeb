@@ -1,44 +1,77 @@
 
-<div class="field">
-  <label class="label">User ID</label>
-  <div class="control">
-    <input class="input" type="text" placeholder="Please enter an unique ID" (input)="setUserProfile($event, 'ID')">
-  </div>
-</div>
 
-<div class="field">
-  <label class="label">Full Name</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-success" type="text" placeholder="Please enter your full name"
-      (input)="setUserProfile($event, 'NAME')">
-    <span class="icon is-small is-left">
-      <i class="fas fa-user"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-check"></i>
-    </span>
-  </div>
-  <!-- <p class="help is-success">This username is available</p> -->
-</div>
-
-<div class="field">
-  <label class="label">Password</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-success" type="text" placeholder="Please enter a passowrd"
-      (input)="setUserProfile($event, 'PASS')">
-    <span class="icon is-small is-left">
-      <i class="fas fa-user"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-check"></i>
-    </span>
-  </div>
-</div>
-
-<section class="section">
-    <div class="field is-horizontal">
-      <div class="buttons" style="padding-right: 25rem;">
-        <button class="button is-primary" (click) = "registerNewUser()">Register</button>
+<!-- Sign-In Html -->
+<div class="container" style="width: 50%;" [hidden] = "!showSignInPage">
+    <h3 class="title is-3">Existing User Login</h3>
+    <div class="field">
+      <label class="label">User ID</label>
+      <div class="control">
+        <input class="input" type="text" #signuserID placeholder="Please enter an unique ID" (input)="setUserProfile($event, 'ID')">
       </div>
     </div>
+  
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control">
+        <input class="input" type="text" #signPassword placeholder="Please enter a passowrd" (input)="setUserProfile($event, 'PASS')">
+      </div>
+      <p class="help is-danger" 
+      [ngStyle] ="{ display: notVerified ? 'none' : 'contents'}">This User ID and Password combination is invalid!</p>
+    </div>
+  
+    <section class="section" style="padding: 0">
+      <div class="field is-horizontal">
+        <div class="buttons" style="margin-bottom: 0rem; padding-right: 1rem;">
+          <button class="button is-primary" (click)="validateLogin()">Sign-In</button>
+        </div>
+        <div class="buttons" style="margin-bottom: 0rem;">
+            <button class="button is-primary" (click)="showRegistrationForm()">Sign-Up</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+<!-- Register User Html -->
+<div class="container" style="width: 50%;" [hidden] = "showSignInPage" >
+  <h3 class="title is-3">New User Registration</h3>
+  <div class="field">
+    <label class="label">User ID</label>
+    <div class="control">
+      <input class="input" type="text" #reguserID placeholder="Please enter an unique ID" (input)="setUserProfile($event, 'ID')">
+    </div>
+    
+    <div class="buttons">
+        <button class="button is-primary" (click)="findUser()">Check Availability</button>
+    </div>
+    <p class="help is-danger" 
+      [ngStyle] ="{ display: hideRegError ? 'none' : 'contents'}">
+      This User ID is already taken!
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Full Name</label>
+    <div class="control">
+      <input class="input" type="text" #reguserName placeholder="Please enter your full name"
+        (input)="setUserProfile($event, 'NAME')">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control">
+      <input class="input" type="text" #regPassword placeholder="Please enter a passowrd" (input)="setUserProfile($event, 'PASS')">
+    </div>
+  </div>
+
+  <section class="section" style="padding: 0">
+    <div class="field is-horizontal">
+      <div class="buttons">
+        <button class="button is-primary" (click)="registerNewUser()">Register</button>
+      </div>      
+    </div>
+    <!-- <p class="help is-danger" 
+      [ngStyle] ="{ display: hideRegError ? 'none' : 'contents'}">
+      This User ID is already taken!</p> -->
   </section>
+</div>
