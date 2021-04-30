@@ -47,6 +47,10 @@
       [ngStyle] ="{ display: hideRegError ? 'none' : 'contents'}">
       This User ID is already taken!
     </p>
+
+    <p class="help is-success text-bold" 
+      [ngStyle] ="{ display: userIDNotAvailable ? 'none' : 'contents'}">
+      This User ID is available.</p>
   </div>
 
   <div class="field">

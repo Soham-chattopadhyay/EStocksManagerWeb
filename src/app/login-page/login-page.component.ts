@@ -20,7 +20,8 @@ import {
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private _usermanagementapiservice: usermanagementapiservice, private router: Router) {};
+  constructor(private _usermanagementapiservice: usermanagementapiservice, private router: Router) { };
+
   @ViewChild('signuserID') inputUserID: any;
   @ViewChild('signPassword') inputPassword: any;
   @ViewChild('reguserName') regUserName: any;
@@ -35,6 +36,7 @@ export class LoginPageComponent implements OnInit {
   notVerified = true;
   hideRegError = true;
   regFailed = true;
+  userIDNotAvailable = true;
 
   ngOnInit(): void {}
 
@@ -56,6 +58,10 @@ export class LoginPageComponent implements OnInit {
     this.regUserID.nativeElement.value = '';
     this.regPassword.nativeElement.value = '';
     this.regFailed = true;
+    this.userIDNotAvailable = true;
+    this.userID = '';
+    this.userName = '';
+    this.password = '';
   }
 
   registerNewUser() {
@@ -119,6 +125,9 @@ export class LoginPageComponent implements OnInit {
   }
 
   findUser() {
+    this.userIDNotAvailable = true;
+    console.log('User check', this.userID);
+
     if (this.userID) {
       if (this.userID.length > 3) {
         this._usermanagementapiservice.getUserIDAvailability(this.userID)
@@ -136,7 +145,7 @@ export class LoginPageComponent implements OnInit {
                 this.hideRegError = false;
               }
               else{
-                alert('UserID is available!');
+                this.userIDNotAvailable = false;
               }
             },
             err => {
