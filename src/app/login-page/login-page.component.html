@@ -72,6 +72,10 @@
     </div>
     <!-- <p class="help is-danger" 
       [ngStyle] ="{ display: hideRegError ? 'none' : 'contents'}">
-      This User ID is already taken!</p> -->
+      This User ID is already taken. Please register with a unique user ID!</p> -->
+
+      <p class="help is-success text-bold" 
+      [ngStyle] ="{ display: regFailed ? 'none' : 'contents'}">
+      Registration successful. Redirecting to Sign-In page...</p>
   </section>
 </div>

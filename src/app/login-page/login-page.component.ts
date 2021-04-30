@@ -34,6 +34,7 @@ export class LoginPageComponent implements OnInit {
   showSignInPage = true;
   notVerified = true;
   hideRegError = true;
+  regFailed = true;
 
   ngOnInit(): void {}
 
@@ -54,6 +55,7 @@ export class LoginPageComponent implements OnInit {
     this.inputPassword.nativeElement.value = '';
     this.regUserID.nativeElement.value = '';
     this.regPassword.nativeElement.value = '';
+    this.regFailed = true;
   }
 
   registerNewUser() {
@@ -67,10 +69,13 @@ export class LoginPageComponent implements OnInit {
     this._usermanagementapiservice.registerUser(userProfile)
       .subscribe(
         data => {
-          this.userID = data;
           console.log('UserID', data);
           if (data) {
-            this.showSignInPage = true;
+            this.userID = data;
+            this.regFailed = false;
+
+            setTimeout(() => {this.showSignInPage = true;}, 2000)
+            
           } else {
             this.inputUserID.nativeElement.value = '';
             this.regUserName.nativeElement.value = '';
@@ -86,11 +91,11 @@ export class LoginPageComponent implements OnInit {
     if (this.userID && this.password) {
       this._usermanagementapiservice.getUserInfo(this.userID, this.password)
         .subscribe(
-          data => {
-            this.userID = data;
+          data => {            
             console.log('UserID', data);
             if (data) {
               console.log('User Validated');
+              this.userID = data;
               this.navigateToCompanyDetails();
             } else {
               console.log('Invalid user');
@@ -119,16 +124,19 @@ export class LoginPageComponent implements OnInit {
         this._usermanagementapiservice.getUserIDAvailability(this.userID)
           .subscribe(
             data => {
-              this.userID = data;
               console.log('UserID', data);
               if (data) {
                 console.log('User Found');
+                this.userID = data;
                 this.inputUserID.nativeElement.value = '';
                 this.regUserName.nativeElement.value = '';
                 this.inputPassword.nativeElement.value = '';
                 this.regUserID.nativeElement.value = '';
                 this.regPassword.nativeElement.value = '';
                 this.hideRegError = false;
+              }
+              else{
+                alert('UserID is available!');
               }
             },
             err => {
