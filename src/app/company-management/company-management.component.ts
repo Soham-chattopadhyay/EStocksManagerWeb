@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class CompanyManagementComponent implements OnInit {
 
   @Input() showCompanyManagerScreen = false;
+  @Input() companyCode = '';
   @Output() showCompanyManagerScreenEvent = new EventEmitter<boolean>();
 
   constructor(private router: Router) { }
