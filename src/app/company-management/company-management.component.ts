@@ -15,7 +15,20 @@ export class CompanyManagementComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  //Properties
+  isReadOnly = false;
+
   ngOnInit(): void {
+  }
+
+  MakeReadOnly(): boolean  {
+    console.log('StockID', this.stockID);
+    if(this.stockID)
+    {
+      this.isReadOnly = true;
+    }
+
+    return this.isReadOnly;
   }
 
   navigateToHome(event: any) {

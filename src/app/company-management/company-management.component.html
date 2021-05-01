@@ -1,5 +1,23 @@
-<div class="container" [hidden] = "!showCompanyManagerScreen">
-  <p>Company manager works for company code {{companyCode}} and stockID {{stockID}}!</p>
+<div class="container" [hidden] = "!showCompanyManagerScreen" style="padding-top: 2rem;">
+
+  <h3 class="title is-3">Manage Listed Company</h3>
+
+  <!-- Fist Section : Company Code, Name, From and To Dates-->
+  <section class="section" style="padding-top: 3rem; padding-bottom: 1rem; width: 50%;">
+    <div class="field is-horizontal">
+      <label class="label" style="padding-top: 0.5rem;">Stock ID</label>
+      <div class="field-body">
+        <div class="field">
+          <div class="control" style="padding-left: 1.5rem; width: 71%;">
+            <input class="input" type="text" placeholder="Stock ID"
+            [readonly] ="MakeReadOnly()" 
+            value = "{{stockID}}">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
 
   <div class="navbar-item">
     <button class="button is-hovered is-link is-light" (click) = "navigateToHome($event)">Back</button>
