@@ -89,10 +89,11 @@
   </section>
 
   <!-- Next Section: Fetch Stocks button -->
-  <section class="section">
-    <div class="field is-horizontal">
+  <section class="section" 
+  [ngStyle] ="{ display: showCompanyManagerScreen ? 'none' : 'contents'}">
+    <div class="field is-horizontal" > 
       <div class="buttons" style="padding-right: 25rem;">
-        <button class="button is-primary" [disabled] = "stockFetchNotAllowed" (click) = "fetchStockInfo()">Fetch Stocks</button>
+        <button class="button is-primary"  [disabled] = "stockFetchNotAllowed" (click) = "fetchStockInfo()">Fetch Stocks</button>
       </div>
     </div>
   </section>
@@ -102,3 +103,9 @@
   [stocksInfoHidden] = "stocksInfoHidden"
   [stockInfo] = "stockInfo"
   ></app-stock-details>
+
+  <!-- Show Company Manager Options -->
+  <app-company-management
+  [showCompanyManagerScreen] = "showCompanyManagerScreen"
+  (showCompanyManagerScreenEvent) = "UpdateCompanyManagerScreenFlag($event)"
+  ></app-company-management>

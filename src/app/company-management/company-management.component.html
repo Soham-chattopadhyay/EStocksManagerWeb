@@ -1,5 +1,7 @@
-<p>Company manager works!</p>
+<div class="container" [hidden] = "!showCompanyManagerScreen">
+  <p>Company manager works!</p>
 
-<div class="navbar-item">
-  <button class="button is-hovered is-link is-light" (click) = "navigateToHome($event)">Back</button>
+  <div class="navbar-item">
+    <button class="button is-hovered is-link is-light" (click) = "navigateToHome($event)">Back</button>
+  </div>
 </div>

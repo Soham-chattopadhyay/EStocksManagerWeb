@@ -30,6 +30,8 @@ export class CompanyDetailsComponent implements OnInit {
   listOfCompanies: CompanyProfile[];
   selectedCompanyInfo: CompanyProfile = new CompanyProfile();
 
+  showCompanyManagerScreen = false;
+
   ngOnInit() {
     //Make API call to populate list of available companies on page load
     this._stockmanagementapiservice.getAllCompanyInfo()
@@ -138,8 +140,14 @@ export class CompanyDetailsComponent implements OnInit {
     );
   }
 
+  UpdateCompanyManagerScreenFlag(event: any)
+  {
+    this.showCompanyManagerScreen = false;
+  }
+
   navigateToCompanyManager (event: any) {
-    this.router.navigate( ['manage-company'] );
+    this.showCompanyManagerScreen = true;
+    this.stocksInfoHidden = true;
   }
 
   navigateToCompanyRegister (event: any) {

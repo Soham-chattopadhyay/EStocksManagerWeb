@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,13 +8,16 @@ import { Router } from '@angular/router';
 })
 export class CompanyManagementComponent implements OnInit {
 
+  @Input() showCompanyManagerScreen = false;
+  @Output() showCompanyManagerScreenEvent = new EventEmitter<boolean>();
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   navigateToHome(event: any) {
-    this.router.navigate(['company-detail']);
+    this.showCompanyManagerScreenEvent.emit(true);
   }
 
 }
