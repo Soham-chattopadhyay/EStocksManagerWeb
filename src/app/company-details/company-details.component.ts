@@ -29,6 +29,7 @@ export class CompanyDetailsComponent implements OnInit {
   disableSearch = true;
   listOfCompanies: CompanyProfile[];
   selectedCompanyInfo: CompanyProfile = new CompanyProfile();
+  manageStockIDEntry = false;
 
   showCompanyManagerScreen = false;
 
@@ -50,6 +51,16 @@ export class CompanyDetailsComponent implements OnInit {
     console.log('default-selectedToDate', this.selectedToDate);
   }
 
+  MakeHidden() : boolean {
+    if(this.companyCode)
+    {
+      return false;
+    }
+
+    return true;
+
+  }
+
   //#region  Get Date Range
   FromDateEntry(event: any) {
     console.log(event.target.valueAsDate);
@@ -66,6 +77,7 @@ export class CompanyDetailsComponent implements OnInit {
   //#endregion
 
   onOptionsSelected(event: any){
+    this.manageStockIDEntry = false;
     this._stockmanagementapiservice.getCompanyInfo(event.target.value)
     .subscribe
     (
@@ -79,11 +91,18 @@ export class CompanyDetailsComponent implements OnInit {
         this.stockInfo = new CompanyStocks();        
         this.stocksInfoHidden = true;        
         this.disableSearch = true;
+
+        if(data && data.stockID && data.stockID !== '')
+        {
+          this.manageStockIDEntry = true;
+        }
+
       }
     );
   }
 
   initiateSearch () {
+    this.manageStockIDEntry = false;
     this._stockmanagementapiservice.getCompanyInfo(this.companyCode)
     .subscribe
     (
@@ -99,6 +118,10 @@ export class CompanyDetailsComponent implements OnInit {
         else
         {
           this.stockFetchNotAllowed = true;
+        }
+        if(data && data.stockID && data.stockID !== '')
+        {
+          this.manageStockIDEntry = true;
         }
         
         this.companyDropDownSelection = 'List All Companies';

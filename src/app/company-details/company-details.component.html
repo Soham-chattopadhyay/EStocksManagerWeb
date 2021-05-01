@@ -9,10 +9,12 @@
     <div class="navbar-menu">
       <div class="navbar-start">
         <div class="navbar-item" >
-          <button class="button is-hovered is-link is-light" (click) = "navigateToCompanyRegister($event)">Register</button>
+          <button class="button is-hovered is-link is-light" (click) = "navigateToCompanyRegister($event)">Add Company</button>
         </div>
         <div class="navbar-item" style="padding-right: 10rem;">
-          <button class="button is-hovered is-link is-light" (click) = "navigateToCompanyManager($event)">Manage Company</button>
+          <button class="button is-hovered is-link is-light"
+          [disabled] ="MakeHidden()"
+          (click) = "navigateToCompanyManager($event)">Manage Company</button>
         </div>
   
         <div class="navbar-item has-dropdown is-hoverable " style="padding-right: 4rem; padding-left: 4rem;">
@@ -107,7 +109,8 @@
   <!-- Show Company Manager Options -->
   <app-company-management
   [showCompanyManagerScreen] = "showCompanyManagerScreen"
-  [companyCode] = "companyCode"
+  [companyCode] = "selectedCompanyInfo.companyCode"
   [stockID] = "selectedCompanyInfo.stockID"
+  [isReadOnly] = "manageStockIDEntry"
   (showCompanyManagerScreenEvent) = "UpdateCompanyManagerScreenFlag($event)"
   ></app-company-management>

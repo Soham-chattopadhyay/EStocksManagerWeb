@@ -1,25 +1,51 @@
 <div class="container" [hidden] = "!showCompanyManagerScreen" style="padding-top: 2rem;">
 
-  <h3 class="title is-3">Manage Listed Company</h3>
+  <h3 class="title is-3">Manage Listed Companies</h3>
 
   <!-- Fist Section : Company Code, Name, From and To Dates-->
-  <section class="section" style="padding-top: 3rem; padding-bottom: 1rem; width: 50%;">
+  <section class="section" style="padding-top: 1rem; padding-bottom: 1rem; width: 50%;">
+    <h3 class="title is-3">Add new Stock/Price</h3>
     <div class="field is-horizontal">
       <label class="label" style="padding-top: 0.5rem;">Stock ID</label>
       <div class="field-body">
         <div class="field">
           <div class="control" style="padding-left: 1.5rem; width: 71%;">
             <input class="input" type="text" placeholder="Stock ID"
-            [readonly] ="MakeReadOnly()" 
+            [readonly] ="isReadOnly" 
+            (input) = "SetStockID($event)"
             value = "{{stockID}}">
+          </div>
+        </div>
+      </div>
+
+      <label class="label" style="padding-top: 0.5rem;">Add Stock Price</label>
+      <div class="field-body">
+        <div class="field">
+          <div class="control" style="padding-left: 1.5rem; width: 71%;">
+            <input class="input" type="text" #stockPriceInput placeholder="Stock Price"
+            (input) = "SetStockPrice($event)"
+            value = "{{stockPrice}}">
           </div>
         </div>
       </div>
     </div>
 
+    <div style="padding-top: 2rem;">
+      <button class="button is-hovered is-primary is-light"
+      (click) = "AddStock($event)">Add Stock</button>
+    </div>
+    
+    <p class="help is-success text-bold" 
+      [ngStyle] ="{ display: notAdded ? 'none' : 'contents'}">
+      Stock/Price addition successful.</p>
+
+      <p class="help is-danger text-bold" 
+      [ngStyle] ="{ display: additionNotFailed ? 'none' : 'contents'}">
+      Stock/Price addition UnSuccessful.</p>
+
   </section>
 
-  <div class="navbar-item">
+  <div class="navbar-item" >
     <button class="button is-hovered is-link is-light" (click) = "navigateToHome($event)">Back</button>
   </div>
 </div>

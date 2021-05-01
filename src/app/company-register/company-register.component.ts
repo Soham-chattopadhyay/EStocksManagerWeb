@@ -73,7 +73,7 @@ export class CompanyRegisterComponent implements OnInit {
       compnayProfile.companyCEO = this.companyCEO;
       compnayProfile.companyWebsite = this.companyWebsite;
       compnayProfile.companyTurnover = this.companyTurnover;
-      compnayProfile.stockEnchange = this.comapanyStockExchange;
+      compnayProfile.stockExchange = this.comapanyStockExchange;
 
       console.log('compnayProfile', compnayProfile);
       this._companymanagementapiservice.registerCompany(compnayProfile)

@@ -3,11 +3,12 @@ export class CompanyProfile
 {
     constructor () {
         this.companyCode = '';
+        this.stockID = '';
         this.companyName = '';
         this.companyCEO = '';
         this.companyTurnover = 0.0;
         this.companyWebsite = '';
-        this.stockEnchange = '';
+        this.stockExchange = '';
         this.regStatusConfirmation = new RegStatusConfirmation();
     }
   companyCode: string;
@@ -16,7 +17,7 @@ export class CompanyProfile
   companyCEO: string;
   companyTurnover: number;
   companyWebsite: string;
-  stockEnchange: string;
+  stockExchange: string;
   companyRegistrationDate: string;
   companyDeletionDate: string;
   latestStockPrice: number;

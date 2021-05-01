@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NewStock } from '../Models/NewStock';
 
 @Injectable()
 export class stockmanagementapiservice
@@ -20,5 +21,9 @@ export class stockmanagementapiservice
         + comnapnyCode
         + '/' + startDate
         + '/' + toDate );
+    }
+
+    addStockToCompany(companyCode: string, stock: NewStock): Observable<any> {
+        return this.httpClient.post('http://localhost:53870/api/v1.0/market/stock/add/' + companyCode, stock);
     }
 }
