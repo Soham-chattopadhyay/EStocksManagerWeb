@@ -11,6 +11,7 @@ export class CompanyProfile
         this.regStatusConfirmation = new RegStatusConfirmation();
     }
   companyCode: string;
+  stockID: string;
   companyName: string;
   companyCEO: string;
   companyTurnover: number;

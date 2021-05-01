@@ -10,6 +10,7 @@ export class CompanyManagementComponent implements OnInit {
 
   @Input() showCompanyManagerScreen = false;
   @Input() companyCode = '';
+  @Input() stockID = '';
   @Output() showCompanyManagerScreenEvent = new EventEmitter<boolean>();
 
   constructor(private router: Router) { }
