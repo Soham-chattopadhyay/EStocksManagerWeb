@@ -1,6 +1,6 @@
 <div class="container" [hidden] = "!showCompanyManagerScreen" style="padding-top: 2rem;">
 
-  <h3 class="title is-3">Manage Listed Companies</h3>
+  <h3 class="title is-3">Manage Company and Stock</h3>
 
   <!-- Fist Section : Company Code, Name, From and To Dates-->
   <section class="section" style="padding-top: 1rem; padding-bottom: 1rem; width: 50%;">
@@ -45,7 +45,11 @@
 
   </section>
 
-  <div class="navbar-item" >
+  <div class="navbar-item" style="padding-right: 2rem;">
     <button class="button is-hovered is-link is-light" (click) = "navigateToHome($event)">Back</button>
+  </div>
+
+  <div class="navbar-item" >
+    <button class="button is-hovered is-danger is-light" (click) = "DeleteCompany($event)">Delete Company</button>
   </div>
 </div>

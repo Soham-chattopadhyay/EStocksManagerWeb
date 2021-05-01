@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewStock } from '../Models/NewStock';
+import { companymanagementapiservice } from '../Services/companymanagementapi.service';
 import { stockmanagementapiservice } from '../Services/stockmanagementapi.services';
 
 @Component({
@@ -11,6 +12,7 @@ import { stockmanagementapiservice } from '../Services/stockmanagementapi.servic
 export class CompanyManagementComponent implements OnInit {
 
   constructor(private _stockmanagementapiservice: stockmanagementapiservice, 
+    private _companymanagementapiservice: companymanagementapiservice,
     private router: Router) { }
 
   @Input() showCompanyManagerScreen = false;
@@ -95,6 +97,26 @@ export class CompanyManagementComponent implements OnInit {
     this.stockPriceInputName.nativeElement.value = 0.0;
     this.isReadOnly = false;
     this.showCompanyManagerScreenEvent.emit(true);
+  }
+
+  DeleteCompany(event: any) {
+    this._companymanagementapiservice.deleteCompany(this.companyCode)
+    .subscribe
+    (
+      data => 
+      {
+        var resp = data;
+        if(resp && resp.regStatusMessage == 'Company deleted')
+        {
+          alert(resp.regStatusMessage);
+          window.location.reload();
+        }
+        else
+        {
+          alert(resp.regStatusMessage);
+        }
+      }
+    );
   }
 
 }
