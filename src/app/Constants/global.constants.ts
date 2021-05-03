@@ -1,6 +1,6 @@
 export const appConstants = {
     API_BASE_URI: 'https://ocelot-gate-api.azurewebsites.net/',
-    API_COMPANY_BASE_ROUTE: '/api/market/company/',
+    API_COMPANY_BASE_ROUTE: 'api/market/company/',
     API_STOCK_BASE_ROUTE: 'api/market/stock/',
     API_USER_BASE_ROUTE: 'api/market/user/',
 
