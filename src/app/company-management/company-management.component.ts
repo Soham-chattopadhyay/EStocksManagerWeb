@@ -32,16 +32,6 @@ export class CompanyManagementComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // MakeReadOnly(): boolean  {
-  //   console.log('StockID', this.stockID);
-  //   if(this.stockID && this.stockID != '')
-  //   {
-  //     this.isReadOnly = true;
-  //   }
-
-  //   return this.isReadOnly;
-  // }
-
   SetStockPrice (event: any) {
     this.additionNotFailed = true;
     this.notAdded = true;

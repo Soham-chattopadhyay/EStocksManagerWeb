@@ -164,7 +164,7 @@ export class CompanyRegisterComponent implements OnInit {
   }
 
   navigateToHome(event: any) {
-    this.router.navigate(['company-detail']);
+    this.router.navigate(['company-detail'], { skipLocationChange: true });
   }
 
 }

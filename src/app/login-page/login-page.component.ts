@@ -161,7 +161,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   navigateToCompanyDetails() {
-    this.router.navigate(['company-detail']);
+    this.router.navigate(['company-detail'], { skipLocationChange: true });
   }
 
 }
