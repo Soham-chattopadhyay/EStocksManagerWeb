@@ -1,5 +1,5 @@
 export const appConstants = {
-    API_BASE_URI: 'https://new-az-wba-sc-fse.azurewebsites.net/',
+    API_BASE_URI: 'https://estockmanagerapi.azurewebsites.net/',
     API_COMPANY_BASE_ROUTE: 'api/v1.0/market/company/',
     API_STOCK_BASE_ROUTE: 'api/v1.0/market/stock/',
     API_USER_BASE_ROUTE: 'api/v1.0/market/user/',
