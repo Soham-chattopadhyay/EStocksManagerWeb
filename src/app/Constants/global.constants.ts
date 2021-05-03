@@ -1,8 +1,8 @@
 export const appConstants = {
-    API_BASE_URI: 'https://estockmanagerapi.azurewebsites.net/',
-    API_COMPANY_BASE_ROUTE: 'api/v1.0/market/company/',
-    API_STOCK_BASE_ROUTE: 'api/v1.0/market/stock/',
-    API_USER_BASE_ROUTE: 'api/v1.0/market/user/',
+    API_BASE_URI: 'https://ocelot-gate-api.azurewebsites.net/',
+    API_COMPANY_BASE_ROUTE: '/api/market/company/',
+    API_STOCK_BASE_ROUTE: 'api/market/stock/',
+    API_USER_BASE_ROUTE: 'api/market/user/',
 
     //Company API endpoints
     REGISTER_COMPANY: 'register',
