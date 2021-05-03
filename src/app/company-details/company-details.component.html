@@ -21,7 +21,9 @@
           <a class="navbar-link">
             {{companyDropDownSelection}}
           </a>
-          <div class="navbar-dropdown" (click) = "onOptionsSelected($event)">
+          <div class="navbar-dropdown" 
+            style="border: solid; border-width: 0.3px; border-color: #b8d0f7"
+            (click) = "onOptionsSelected($event)">
             <option class="navbar-item" *ngFor = "let company of listOfCompanies" [value] ="company.companyCode"
             (click) = "setCompanyListDropDownHeader($event, company.companyName)">
               {{company.companyName}}
