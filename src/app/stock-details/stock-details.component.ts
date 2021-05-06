@@ -8,6 +8,7 @@ import { CompanyStocks } from '../Models/CompanyStocks';
 })
 export class StockDetailsComponent implements OnInit {
   @Input() stocksInfoHidden = true;
+  @Input() hideNoStocksMessage = true;
   @Input() stockInfo = new CompanyStocks();
 
   stockInfoHeaders = ['Stock Price','Date','TIME'];

@@ -126,6 +126,7 @@ export class LoginPageComponent implements OnInit {
 
   findUser() {
     this.userIDNotAvailable = true;
+    this.hideRegError = true;
     console.log('User check', this.userID);
 
     if (this.userID) {

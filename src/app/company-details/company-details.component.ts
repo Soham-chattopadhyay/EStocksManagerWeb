@@ -26,6 +26,7 @@ export class CompanyDetailsComponent implements OnInit {
   stockInfo: CompanyStocks = new CompanyStocks();
   stockFetchNotAllowed = true;
   stocksInfoHidden = true;
+  hideNoStocksMessage = true;
   disableSearch = true;
   listOfCompanies: CompanyProfile[];
   selectedCompanyInfo: CompanyProfile = new CompanyProfile();
@@ -89,7 +90,8 @@ export class CompanyDetailsComponent implements OnInit {
         this.inputName.nativeElement.value = '';
         this.companyCode = this.selectedCompanyInfo.companyCode;
         this.stockInfo = new CompanyStocks();        
-        this.stocksInfoHidden = true;        
+        this.stocksInfoHidden = true;
+        this.hideNoStocksMessage = true;        
         this.disableSearch = true;
 
         if(data && data.stockID && data.stockID !== '')
@@ -127,6 +129,7 @@ export class CompanyDetailsComponent implements OnInit {
         this.companyDropDownSelection = 'List All Companies';
         this.stockInfo = new CompanyStocks();
         this.stocksInfoHidden = true;
+        this.hideNoStocksMessage = true;
         this.disableSearch = true;
         this.inputName.nativeElement.value = '';
       }
@@ -157,6 +160,7 @@ export class CompanyDetailsComponent implements OnInit {
           this.stocksInfoHidden = false;
         }
         else{
+          this.hideNoStocksMessage = false;
           this.stocksInfoHidden = true;
         }
       }
@@ -171,6 +175,7 @@ export class CompanyDetailsComponent implements OnInit {
   navigateToCompanyManager (event: any) {
     this.showCompanyManagerScreen = true;
     this.stocksInfoHidden = true;
+    this.hideNoStocksMessage = true;
   }
 
   navigateToCompanyRegister (event: any) {
