@@ -64,10 +64,16 @@ export class CompanyManagementComponent implements OnInit {
           if(data && data.regStatusMessage == 'Registration unsuccessful!')
           {
             this.additionNotFailed = false;
+            setTimeout(() => {
+              this.additionNotFailed = true;
+            }, 2000);
           }
           else
           {
             this.notAdded = false;
+            setTimeout(() => {
+              this.notAdded = true;
+            }, 2000);
           }
         }
       );
