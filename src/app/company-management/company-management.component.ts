@@ -54,7 +54,7 @@ export class CompanyManagementComponent implements OnInit {
       stocks.stockPrice = this.stockPrice;
 
       console.log('stocks', stocks);
-      console.log('Compnay Code', this.companyCode);
+      console.log('Add Stock - Compnay Code', this.companyCode);
       //Make API call to Add Stock
       this._stockmanagementapiservice.addStockToCompany(this.companyCode, stocks)
       .subscribe

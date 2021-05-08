@@ -37,7 +37,7 @@ export class stockmanagementapiservice
     //     + '/' + toDate );
     // }
 
-    getStockyInfo(comnapnyCode: string, startDate: string, toDate: string): Observable<any> {
+    getStockInfo(comnapnyCode: string, startDate: string, toDate: string): Observable<any> {
         return this.httpClient.get(appConstants.API_BASE_URI 
             + appConstants.API_STOCK_BASE_ROUTE 
             + appConstants.GET_STOCK_INFO

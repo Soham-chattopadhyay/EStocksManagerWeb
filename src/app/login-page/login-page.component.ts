@@ -162,7 +162,12 @@ export class LoginPageComponent implements OnInit {
   }
 
   navigateToCompanyDetails() {
-    this.router.navigate(['company-detail'], { skipLocationChange: true });
+    this.router.navigate(['company-detail']);//, { skipLocationChange: true }
+  }
+
+  navigateToHome(event: any) {
+    //this.showSignInPage = true
+    window.location.reload();
   }
 
 }

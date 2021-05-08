@@ -147,7 +147,8 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   fetchStockInfo() {
-    this._stockmanagementapiservice.getStockyInfo(this.companyCode, this.selectedFromDate, this.selectedToDate)
+    this.hideNoStocksMessage = true;
+    this._stockmanagementapiservice.getStockInfo(this.companyCode, this.selectedFromDate, this.selectedToDate)
     .subscribe
     (
       data=>
@@ -179,7 +180,7 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   navigateToCompanyRegister (event: any) {
-    this.router.navigate( ['register-company'] , { skipLocationChange: true });
+    this.router.navigate( ['register-company']); // , { skipLocationChange: true }
   }
 
 }

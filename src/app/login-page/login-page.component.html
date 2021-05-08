@@ -72,7 +72,11 @@
     <div class="field is-horizontal">
       <div class="buttons">
         <button class="button is-primary" (click)="registerNewUser()">Register</button>
-      </div>      
+      </div>  
+      
+      <div class="buttons" style="padding-left: 2rem; margin-bottom: 0.9rem;">
+        <button class="button is-hovered is-link is-light" (click) = "navigateToHome($event)">Back</button>
+      </div>
     </div>
     <!-- <p class="help is-danger" 
       [ngStyle] ="{ display: hideRegError ? 'none' : 'contents'}">

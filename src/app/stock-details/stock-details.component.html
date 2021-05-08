@@ -1,26 +1,29 @@
 <!-- Next Stock Info table -->
-<section class="section tile is-parent">
+<section class="section tile is-parent" style="padding-top: 2rem;">
   <p class="help is-danger" [ngStyle] ="{ display: hideNoStocksMessage ? 'none' : 'contents'}">
     No stock information available for the selected date range/company!
   </p>
 
-  <table class="table" [hidden] ="stocksInfoHidden">
+  <table class="table" [hidden] ="stocksInfoHidden" style="border-style: solid;">
     <thead>
       <tr>
-        <th style="padding-right: 4rem; padding-left: 3rem" *ngFor="let col of stockInfoHeaders">
+        <th style="padding-right: 4rem; padding-left: 3rem; text-align: center;" *ngFor="let col of stockInfoHeaders">
           {{col}}
         </th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let data of stockInfo.stockDetails">
-        <td style="text-align: center;">
-          {{data.stockPrice}}
+    <tbody >  <!--style="height: 150px; overflow-y: scroll;" -->
+      <tr *ngFor="let data of stockInfo.stockDetails" style="text-align: center;">
+        <td>
+          {{data.stockID}}
         </td>
-        <td style="text-align: center;">
+        <td>
+          {{data.stockPrice | number : '1.2-2'}}
+        </td>
+        <td>
           {{data.priceAsOfDate}}
         </td>
-        <td style="text-align: center;">
+        <td>
           {{data.priceAsOfTime}}
         </td>
       </tr>
@@ -31,19 +34,37 @@
 
 <!-- Stock Min,max,avg -->
 <div [hidden]="stocksInfoHidden">
-  <section class="section" style="padding-top: 3rem; padding-bottom: 1rem;">
+  <section class="section" style="padding-top: 1.5rem; padding-bottom: 1rem;">
     <div class="field is-horizontal">
       <label class="label" style="padding-top: 0.5rem;">MIN</label>
       <div class="field-body">
         <div class="field">
-          <div class="control" style="padding-left: 1.5rem; width: 30%;">
-            <input class="input" type="text" placeholder="Minimum Price" readonly value="{{stockInfo.minStockPrice}}">
+          <div class="control" style="padding-left: 1.5rem; width: 50%;">
+            <input class="input" type="text" placeholder="Minimum Price" readonly value="{{stockInfo.minStockPrice | number : '1.2-2'}}">
+          </div>
+        </div>
+      </div>
+
+      <label class="label" style="padding-top: 0.5rem;">MAX</label>
+      <div class="field-body">
+        <div class="field">
+          <div class="control" style="padding-left: 1.5rem; width: 50%;">
+            <input class="input" type="text" placeholder="Maximum Price" readonly value="{{stockInfo.maxStockPrice | number : '1.2-2'}}">
+          </div>
+        </div>
+      </div>
+
+      <label class="label" style="padding-top: 0.5rem;">AVG</label>
+      <div class="field-body">
+        <div class="field">
+          <div class="control" style="padding-left: 1.5rem; width: 50%;">
+            <input class="input" type="text" placeholder="Average Price" readonly value="{{stockInfo.avgStockPrice | number : '1.2-2'}}">
           </div>
         </div>
       </div>
     </div>
 
-    <div class="field is-horizontal">
+    <!-- <div class="field is-horizontal">
       <label class="label" style="padding-top: 0.5rem;">MAX</label>
       <div class="field-body">
         <div class="field">
@@ -52,9 +73,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="field is-horizontal">
+    <!-- <div class="field is-horizontal">
       <label class="label" style="padding-top: 0.5rem;">AVG</label>
       <div class="field-body">
         <div class="field">
@@ -63,7 +84,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
   </section>
 </div>

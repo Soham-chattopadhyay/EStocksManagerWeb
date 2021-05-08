@@ -11,7 +11,7 @@ export class StockDetailsComponent implements OnInit {
   @Input() hideNoStocksMessage = true;
   @Input() stockInfo = new CompanyStocks();
 
-  stockInfoHeaders = ['Stock Price','Date','TIME'];
+  stockInfoHeaders = ['Stock ID','Stock Price','Date','TIME'];
 
   constructor() { }
 

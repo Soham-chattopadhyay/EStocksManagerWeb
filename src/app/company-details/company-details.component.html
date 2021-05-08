@@ -1,9 +1,9 @@
 <!-- Navbar section -->
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://sc-fse-stockmanager.azurewebsites.net/">
+      <div class="navbar-item"> <!--href="https://sc-fse-stockmanager.azurewebsites.net/"-->
         <img src="https://bulma.io/images/bulma-logo.png" width="100" height="28">
-      </a>
+      </div>
     </div>
   
     <div class="navbar-menu">
@@ -22,7 +22,7 @@
             {{companyDropDownSelection}}
           </a>
           <div class="navbar-dropdown" 
-            style="border: solid; border-width: 0.3px; border-color: #b8d0f7"
+            style="border: solid; border-width: 0.3px; border-color: #b8d0f7; height: 150px; overflow: auto;"
             (click) = "onOptionsSelected($event)">
             <option class="navbar-item" *ngFor = "let company of listOfCompanies" [value] ="company.companyCode"
             (click) = "setCompanyListDropDownHeader($event, company.companyName)">
