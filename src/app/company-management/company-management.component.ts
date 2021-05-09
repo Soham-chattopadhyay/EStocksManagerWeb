@@ -105,7 +105,9 @@ export class CompanyManagementComponent implements OnInit {
         if(resp && resp.regStatusMessage == 'Company deleted')
         {
           alert(resp.regStatusMessage);
-          window.location.reload();
+          //this.showCompanyManagerScreen = false;
+          history.go(0);
+          //window.location.reload();
         }
         else
         {
