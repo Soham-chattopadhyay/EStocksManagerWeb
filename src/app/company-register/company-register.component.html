@@ -56,11 +56,15 @@
     </div>
   </div>
 
-  <section class="section" style="padding: 0">
+  <section class="section" style="padding-left: 0; padding-top: 2rem">
     <div class="field is-horizontal">
       <div class="buttons">
         <button class="button is-primary" (click)="registerNewCompany()">Register</button>
-      </div>      
+      </div> 
+      
+      <div class="buttons" style="padding-bottom: 1.4rem;padding-left: 3rem;">
+        <button class="button is-hovered is-link is-light" (click) = "navigateToHome($event)">Back</button>
+      </div>
     </div>
 
       <p class="help is-success text-bold" 
@@ -74,6 +78,4 @@
   </section>
 </div>
 
-  <div class="navbar-item">
-    <button class="button is-hovered is-link is-light" (click) = "navigateToHome($event)">Back</button>
-  </div>
+  
