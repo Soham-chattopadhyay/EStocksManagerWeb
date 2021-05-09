@@ -25,8 +25,9 @@
             style="border: solid; border-width: 0.3px; border-color: #b8d0f7; height: 150px; overflow: auto;"
             (click) = "onOptionsSelected($event)">
             <option class="navbar-item" *ngFor = "let company of listOfCompanies" [value] ="company.companyCode"
-            (click) = "setCompanyListDropDownHeader($event, company.companyName)">
-              {{company.companyName}}
+            (click) = "setCompanyListDropDownHeader($event, company.companyName)" 
+            style="font-weight: 600; font-size: 16px;">
+              {{company.companyName}} - {{company.latestStockPrice | number : '1.2-2'}}
             </option>            
           </div>
         </div>
@@ -92,6 +93,17 @@
         </div>
       </div>
 
+    </div>
+
+    <div class="field is-horizontal">
+      <label class="label" style="padding-top: 0.5rem;">Latest Stock Price</label>
+      <div class="field-body">
+        <div class="field">
+          <div class="control" style="padding-left: 1rem; width: 15%;">
+            <input class="input" type="text" placeholder=" Latest Price" readonly  value = "{{selectedCompanyInfo.latestStockPrice | number : '1.2-2' }}">
+          </div>
+        </div>
+      </div>
     </div>
 
   </section>
