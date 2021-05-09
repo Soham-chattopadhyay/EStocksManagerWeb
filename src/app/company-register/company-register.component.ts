@@ -75,11 +75,11 @@ export class CompanyRegisterComponent implements OnInit {
       compnayProfile.companyTurnover = this.companyTurnover;
       compnayProfile.stockExchange = this.comapanyStockExchange;
 
-      console.log('compnayProfile', compnayProfile);
+      //console.log('compnayProfile', compnayProfile);
       this._companymanagementapiservice.registerCompany(compnayProfile)
         .subscribe(
           data => {
-            console.log('CompanyInfo', data);
+            //console.log('CompanyInfo', data);
             if (data && data.companyCode) {
               this.companyCode = data.companyCode;
               this.comapanyName = data.comapanyName;
@@ -88,7 +88,7 @@ export class CompanyRegisterComponent implements OnInit {
               this.companyTurnover = data.companyTurnover;
               this.comapanyStockExchange = data.comapanyStockExchange;
 
-              console.log(data.regStatusMessage);
+              //console.log(data.regStatusMessage);
               if(data.regStatusMessage == 'Registration unsuccessful!')
               {                
                 this.hideRegFailMessage = false;
@@ -110,7 +110,7 @@ export class CompanyRegisterComponent implements OnInit {
             this.stockEx.nativeElement.value = '';
           },
           err => {
-            console.log('HTTP Error', err);
+            //console.log('HTTP Error', err);
             this.code.nativeElement.value = '';
             this.name.nativeElement.value = '';
             this.website.nativeElement.value = '';
@@ -131,15 +131,15 @@ export class CompanyRegisterComponent implements OnInit {
 
   findCompany() {
     this.companyCodeNotAvailable = true;
-    console.log('Company Code Check', this.companyCode);
+    //console.log('Company Code Check', this.companyCode);
 
     if (this.companyCode) {
       this._stockmanagementapiservice.getCompanyInfo(this.companyCode)
         .subscribe(
           data => {
-            console.log('Company', data);
+            //console.log('Company', data);
             if (data && data.companyCode) {
-              console.log('Company - Found');
+              //console.log('Company - Found');
               this.companyCode = data.companyCode;
               this.comapanyName = data.comapanyName;
               this.companyCEO = data.companyCEO;
@@ -155,7 +155,7 @@ export class CompanyRegisterComponent implements OnInit {
             }
           },
           err => {
-            console.log('HTTP Error', err);
+            //console.log('HTTP Error', err);
           }
         );
     } else {

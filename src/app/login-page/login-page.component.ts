@@ -71,11 +71,11 @@ export class LoginPageComponent implements OnInit {
     userProfile.userName = this.userName;
     userProfile.password = this.password;
 
-    console.log('userProfile', userProfile);
+    //console.log('userProfile', userProfile);
     this._usermanagementapiservice.registerUser(userProfile)
       .subscribe(
         data => {
-          console.log('UserID', data);
+          //console.log('UserID', data);
           if (data) {
             this.userID = data;
             this.regFailed = false;
@@ -98,13 +98,13 @@ export class LoginPageComponent implements OnInit {
       this._usermanagementapiservice.getUserInfo(this.userID, this.password)
         .subscribe(
           data => {            
-            console.log('UserID', data);
+            //console.log('UserID', data);
             if (data) {
-              console.log('User Validated');
+              //console.log('User Validated');
               this.userID = data;
               this.navigateToCompanyDetails();
             } else {
-              console.log('Invalid user');
+              //console.log('Invalid user');
               this.inputUserID.nativeElement.value = '';
               this.regUserName.nativeElement.value = '';
               this.inputPassword.nativeElement.value = '';
@@ -114,7 +114,7 @@ export class LoginPageComponent implements OnInit {
             }
           },
           err => {
-            console.log('HTTP Error', err);
+            //console.log('HTTP Error', err);
             this.notVerified = false;
           }
         );
@@ -127,16 +127,16 @@ export class LoginPageComponent implements OnInit {
   findUser() {
     this.userIDNotAvailable = true;
     this.hideRegError = true;
-    console.log('User check', this.userID);
+    //console.log('User check', this.userID);
 
     if (this.userID) {
       if (this.userID.length > 3) {
         this._usermanagementapiservice.getUserIDAvailability(this.userID)
           .subscribe(
             data => {
-              console.log('UserID', data);
+              //console.log('UserID', data);
               if (data) {
-                console.log('User Found');
+                //console.log('User Found');
                 this.userID = data;
                 this.inputUserID.nativeElement.value = '';
                 this.regUserName.nativeElement.value = '';
@@ -150,7 +150,7 @@ export class LoginPageComponent implements OnInit {
               }
             },
             err => {
-              console.log('HTTP Error', err);
+              //console.log('HTTP Error', err);
             }
           );
       } else {

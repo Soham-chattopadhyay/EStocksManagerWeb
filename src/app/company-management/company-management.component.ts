@@ -45,16 +45,16 @@ export class CompanyManagementComponent implements OnInit {
   }
 
   AddStock(event: any) {
-    console.log('Stock details Added');
-    console.log('stock price', this.stockPrice);
+    //console.log('Stock details Added');
+    //console.log('stock price', this.stockPrice);
     if((this.stockID || this.inputStockID) && this.stockPrice > 0)
     {
       var stocks = new NewStock();
       stocks.stockID = this.stockID ? this.stockID : this.inputStockID;
       stocks.stockPrice = this.stockPrice;
 
-      console.log('stocks', stocks);
-      console.log('Add Stock - Compnay Code', this.companyCode);
+      //console.log('stocks', stocks);
+      //console.log('Add Stock - Compnay Code', this.companyCode);
       //Make API call to Add Stock
       this._stockmanagementapiservice.addStockToCompany(this.companyCode, stocks)
       .subscribe

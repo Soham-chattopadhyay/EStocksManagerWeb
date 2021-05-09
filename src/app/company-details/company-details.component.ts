@@ -47,13 +47,13 @@ export class CompanyDetailsComponent implements OnInit {
     
     //Set Default date value
     this.selectedFromDate = formatDate(new Date(), 'MM-dd-yyyy', 'en-US');
-    console.log('default-selectedFromDate', this.selectedFromDate);
+    //console.log('default-selectedFromDate', this.selectedFromDate);
     this.selectedToDate = formatDate(new Date(), 'MM-dd-yyyy', 'en-US');
-    console.log('default-selectedToDate', this.selectedToDate);
+    //console.log('default-selectedToDate', this.selectedToDate);
   }
 
   MakeHidden(companyCode: string) : boolean {
-    console.log("MakeHidden - company code input", companyCode);
+    //console.log("MakeHidden - company code input", companyCode);
     if(companyCode)
     {
       return false;
@@ -65,15 +65,15 @@ export class CompanyDetailsComponent implements OnInit {
 
   //#region  Get Date Range
   FromDateEntry(event: any) {
-    console.log(event.target.valueAsDate);
+    //console.log(event.target.valueAsDate);
     this.selectedFromDate = formatDate(event.target.valueAsDate, 'MM-dd-yyyy', 'en-US');
-    console.log('selectedFromDate', this.selectedFromDate);
+    //console.log('selectedFromDate', this.selectedFromDate);
   }
 
   ToDateEntry(event: any) {
-    console.log(event.target.valueAsDate);
+    //console.log(event.target.valueAsDate);
     this.selectedToDate = formatDate(event.target.valueAsDate, 'MM-dd-yyyy', 'en-US');
-    console.log('selectedToDate', this.selectedToDate);
+    //console.log('selectedToDate', this.selectedToDate);
   }
 
   //#endregion
@@ -86,7 +86,7 @@ export class CompanyDetailsComponent implements OnInit {
       data=>
       {
         this.selectedCompanyInfo = data;
-        console.log('selectedCompanyInfo', this.selectedCompanyInfo);
+        //console.log('selectedCompanyInfo', this.selectedCompanyInfo);
         this.stockFetchNotAllowed = false;
         this.inputName.nativeElement.value = '';
         this.companyCode = this.selectedCompanyInfo.companyCode;
@@ -112,7 +112,7 @@ export class CompanyDetailsComponent implements OnInit {
       data=>
       {
         this.selectedCompanyInfo = data;
-        console.log('selectedCompanyInfo', this.selectedCompanyInfo);
+        //console.log('selectedCompanyInfo', this.selectedCompanyInfo);
 
         if(data != null && data.companyCode)
         {
@@ -155,8 +155,8 @@ export class CompanyDetailsComponent implements OnInit {
       data=>
       {
         this.stockInfo = data;
-        console.log('stockInfo', this.stockInfo);
-        console.log('Company Code post fetch', this.companyCode);
+        //console.log('stockInfo', this.stockInfo);
+        //console.log('Company Code post fetch', this.companyCode);
 
         if(this.stockInfo != null && this.stockInfo.stockDetails !=null && this.stockInfo.stockDetails.length > 0)
         {
@@ -183,6 +183,8 @@ export class CompanyDetailsComponent implements OnInit {
     this.inputName.nativeElement.value = '';
     this.stockFetchNotAllowed = true;
     this.selectedCompanyInfo = new CompanyProfile();
+
+    history.go(0);
   }
 
   navigateToCompanyManager (event: any) {
