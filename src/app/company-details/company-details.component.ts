@@ -52,12 +52,13 @@ export class CompanyDetailsComponent implements OnInit {
     console.log('default-selectedToDate', this.selectedToDate);
   }
 
-  MakeHidden() : boolean {
-    if(this.companyCode)
+  MakeHidden(companyCode: string) : boolean {
+    console.log("MakeHidden - company code input", companyCode);
+    if(companyCode)
     {
       return false;
     }
-
+    
     return true;
 
   }
@@ -155,6 +156,7 @@ export class CompanyDetailsComponent implements OnInit {
       {
         this.stockInfo = data;
         console.log('stockInfo', this.stockInfo);
+        console.log('Company Code post fetch', this.companyCode);
 
         if(this.stockInfo != null && this.stockInfo.stockDetails !=null && this.stockInfo.stockDetails.length > 0)
         {
@@ -171,6 +173,16 @@ export class CompanyDetailsComponent implements OnInit {
   UpdateCompanyManagerScreenFlag(event: any)
   {
     this.showCompanyManagerScreen = false;
+
+    this.companyDropDownSelection = 'List All Companies';
+    this.companyCode = '';
+    this.stockInfo = new CompanyStocks();
+    this.stocksInfoHidden = true;
+    this.hideNoStocksMessage = true;
+    this.disableSearch = true;
+    this.inputName.nativeElement.value = '';
+    this.stockFetchNotAllowed = true;
+    this.selectedCompanyInfo = new CompanyProfile();
   }
 
   navigateToCompanyManager (event: any) {
