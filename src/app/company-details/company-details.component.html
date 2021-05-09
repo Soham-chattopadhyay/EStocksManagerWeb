@@ -11,7 +11,7 @@
         <div class="navbar-item" >
           <button class="button is-hovered is-link is-light" (click) = "navigateToCompanyRegister($event)">Add Company</button>
         </div>
-        <div class="navbar-item" style="padding-right: 10rem;">
+        <div class="navbar-item" style="padding-right: 4rem;">
           <button class="button is-hovered is-link is-light"
           [disabled] ="MakeHidden()"
           (click) = "navigateToCompanyManager($event)">Manage Company</button>
@@ -43,6 +43,10 @@
             </div>
           </div>
         </div>
+
+        <div class="navbar-item" style="padding-right: 2rem;">
+          <button class="button is-hovered is-link is-light" (click) = "navigateToLogin($event)">Logout</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -63,7 +67,7 @@
       <div class="field-body">
         <div class="field">
           <div class="control" style="padding-top: 0.5rem; padding-left: 2rem;">
-            <input type="date" (change)="FromDateEntry($event)">
+            <input type="date" [value] ="selectedFromDate | date: 'yyyy-MM-dd'" (change)="FromDateEntry($event)">
           </div>
         </div>
       </div>
@@ -83,7 +87,7 @@
       <div class="field-body">
         <div class="field">
           <div class="control" style="padding-top: 0.5rem; padding-left: 2rem;">
-            <input type="date" (change)="ToDateEntry($event)" >
+            <input type="date" [value] ="selectedToDate | date: 'yyyy-MM-dd'" (change)="ToDateEntry($event)" >
           </div>
         </div>
       </div>

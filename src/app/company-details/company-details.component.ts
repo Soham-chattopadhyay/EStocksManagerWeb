@@ -183,4 +183,8 @@ export class CompanyDetailsComponent implements OnInit {
     this.router.navigate( ['register-company']); // , { skipLocationChange: true }
   }
 
+  navigateToLogin (event: any) {
+    this.router.navigate( ['']);
+  }
+
 }
